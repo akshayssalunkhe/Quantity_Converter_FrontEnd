@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+
+}
+.login-box {
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    background-color: grey;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+}
+#inputValue,#outputValue {
+    height: 20px;
+    text-align: center;
+    border: 1px solid black;
+    margin-left: 10px;
+}
+#inputValue {
+    margin-left: 25px;
+}
+
+#unitType {
+    width: 150.00px;
+    margin-left: 25px;
+    color: red;
+    border: 1px solid black;
+    margin-right: 25px;
+}
+#unitTyped {
+    width: 150.00px;
+    margin-left: 25px;
+    color: red;
+    text-align: center;
+    border: 1px solid black;
+    margin-right: 25px;
+}
+#outputUnit {
+    margin-right: 1.5px;
+
+}
+
+#inputUnit, #outputUnit,#button {
+    width: 150.00px;
+    margin-left: 25px;
+    color: red;
+    border: 1px solid black;
+}
