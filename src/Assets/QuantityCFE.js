@@ -10,10 +10,10 @@ class QuantityConversion extends Component {
             unitType: ['LENGTH'],
             units: ['INCH', 'FEET', 'YARD', 'CENTIMETER'],
             selectedUnitType: '',
-            inputValue:0,
-            inputUnit:'INCH',
-            outputUnit:'INCH',
-            outputValue:0,
+            inputValue: 0,
+            inputUnit: 'INCH',
+            outputUnit: 'INCH',
+            outputValue: 0,
         };
         this.changeUnitType = this.changeUnitType.bind(this);
     }
@@ -47,14 +47,21 @@ class QuantityConversion extends Component {
     }
 
     getConversion() {
-        axios.get("http://localhost:8081/unitConversion/addConversion/")
+        let json = {
+            "inputUnit": this.state.inputUnit,
+            "inputValue": this.state.inputValue,
+            "outputUnit": this.state.outputUnit,
+            "unitType": this.state.unitType[0].name
+        }
+        axios.put("http://localhost:8081/unitConversion/addConversion", json)
             .then(response => {
-                this.setState({outputValue:response.data})
+                this.setState({outputValue: response.data})
             })
             .catch(error => {
                 alert("Please enter proper value")
             })
     }
+
     render() {
         return (
             <div className='login-box'>
@@ -67,11 +74,12 @@ class QuantityConversion extends Component {
                 </select>
 
                 <br/><br/>
-                <input id="inputValue" type={"number"} placeholder='value' value={this.state.inputValue} onChange={this.setInput.bind(this)}></input>
-                <input id="outputValue" type={"number"} placeholder='value' value={this.state.outputValue} ></input>
+                <input id="inputValue" type={"number"} placeholder='value' value={this.state.inputValue}
+                       onChange={this.setInput.bind(this)}></input>
+                <input id="outputValue" type={"number"} placeholder='value' value={this.state.outputValue}></input>
                 <br/>
                 <select id="inputUnit" value={this.state.inputUnit} onChange={this.changeInputUnit.bind(this)}>
-                    {this.state.units.map((e, key) =>{
+                    {this.state.units.map((e, key) => {
                         return <option key={key}>{e}</option>;
                     })
                     }
